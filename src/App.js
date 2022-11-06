@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import "./App.css";
 
 function App() {
+  let purple = 	"#9F2B68";
+  const [bg,setBg]=useState(purple);
+  const [name,setName]=useState("Click Me")
+
+  const bgChange = ()=>{
+    // console.log("Clicked")
+    let red = "#FF0000";
+    setBg(red);
+    setName("Clicked");
+  }
+  const bgBack =()=>{
+    setBg(purple);
+    setName("Click Me");
+  }
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   
+    <>
+    <div style={{backgroundColor:bg}}>
+    {/* React Events 
+    we use event in react, in event name we use camelcase
+    click button to change the backgroung color and double click for remove changes
+     */}
+     <button onClick={bgChange} onDoubleClick={bgBack}>{name}</button>
     </div>
-  );
+    </>
+
+  )
 }
 
-export default App;
+export default App
